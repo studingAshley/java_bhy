@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class J0904_10_A_FORM_OF_GRADE {
 
+	@SuppressWarnings("null")
 	public static void main(String[] args) {
-
+		system file1 = new system();
+		
 		Scanner scan = new Scanner(System.in);
 		int choice = 0 ; 
 		
@@ -20,23 +22,31 @@ public class J0904_10_A_FORM_OF_GRADE {
 		System.out.println("6. 등수처리");
 		System.out.println("7. 순차정렬");
 		System.out.println("8. 역순정렬");
+		System.out.println("9. 종료");
 		System.out.println("--------------");
 		
 		System.out.print("원하는 번호를 입력하세요.>>");
 		
 		choice = scan.nextInt();
 		
-		system file1 = new system();
+		int i[]= {0,1,2};
+
+		System.out.println(""+i[0]+i[1]+i[2]);
+		
 		file1.add_student("NAME", 1030);
 		file1.add_student("NAME2", 1040);
 		file1.add_student("NAME3", 1050);
 		
-		System.out.println(file1.data.get(0).get_name());
-		System.out.println(file1.data.get(0).get_studentNumber());
-		System.out.println(file1.data.get(1).get_name());
-		System.out.println(file1.data.get(1).get_studentNumber());
-		System.out.println(file1.data.get(2).get_name());
-		System.out.println(file1.data.get(2).get_studentNumber());
+
+		student std = new student();
+		
+		std.set_name("TestNameStd");
+		file1.add_student("TestName2File", 1010);
+		
+		System.out.println(std.get_name());
+		System.out.println(std.toString());
+		
+		file1.temp(std);
 		
 		switch(choice)
 		{
@@ -86,13 +96,44 @@ public class J0904_10_A_FORM_OF_GRADE {
 	
 	}
 
+	void insert(student std)
+	{
+		
+	
+		System.out.println("");
+		
+	}
+	void printAll()
+	{
+		
+	}
+	
+	void modification()
+	{
+		
+	}
+	
+	void delete()
+	{
+		
+	}
+	
+	void search()
+	{
+		
+	}
+	
+	void sort()
+	{
+		
+	}
 }
 
 class student
 {
-	String name;
-	int studentNumber;
-	int kor,eng,math;
+	private String name;
+	private int studentNumber;
+	private int kor,eng,math;
 	//=================================================================	
 	student()
 	{
@@ -165,7 +206,7 @@ class student
 class system // 추가, 출력, 수정, 삭제, 검색, 등수부여, 정렬
 {
 
-	List<student> data = new ArrayList<student>();
+	private List<student> data = new ArrayList<student>();
 	
 	system()
 	{
@@ -184,34 +225,62 @@ class system // 추가, 출력, 수정, 삭제, 검색, 등수부여, 정렬
 		int index = get_index(name);
 		if(index != -1)
 		{
-			data.get(index).kor = sc;
+			data.get(index).set_kor(sc); 
 			return true;
 		}
 		return false;
 		
 	}
-	void set_score_eng(String name, int sc)
+	boolean set_score_eng(String name, int sc)
 	{
 		int index = get_index(name);
-		data.get(index).eng = sc;		
+		if(index != -1)
+		{
+			data.get(index).set_eng(sc);
+			return true;
+		}
+		return false;
 	}
-	void set_score_math(String name, int sc)
+	boolean set_score_math(String name, int sc)
 	{
 		int index = get_index(name);
-		data.get(index).math = sc;		
+		if(index != -1)
+		{
+			data.get(index).set_math(sc);	
+			return true;
+		}
+		return false;
 	}
 	//=================================================================
-	void set_score_kor(int studentnum, int sc)
+	boolean set_score_kor(int studentnum, int sc)
 	{
-		
+		int index = get_index(studentnum);
+		if(index != -1)
+		{
+			data.get(index).set_kor(sc);	
+			return true;
+		}
+		return false;
 	}
-	void set_score_eng(int studentnum, int sc)
+	boolean set_score_eng(int studentnum, int sc)
 	{
-		
+		int index = get_index(studentnum);
+		if(index != -1)
+		{
+			data.get(index).set_eng(sc);	
+			return true;
+		}
+		return false;
 	}
-	void set_score_math(int studentnum, int sc)
+	boolean set_score_math(int studentnum, int sc)
 	{
-		
+		int index = get_index(studentnum);
+		if(index != -1)
+		{
+			data.get(index).set_math(sc);	
+			return true;
+		}
+		return false;
 	}
 	
 	//=================================================================
@@ -222,7 +291,7 @@ class system // 추가, 출력, 수정, 삭제, 검색, 등수부여, 정렬
 		int size = data.size();
 		for (int i = 0 ; i < size ; i++)
 		{
-			if(data.get(i).name.equals(name))
+			if(data.get(i).get_name().equals(name))
 			{
 				return i;
 			}
@@ -234,12 +303,18 @@ class system // 추가, 출력, 수정, 삭제, 검색, 등수부여, 정렬
 		int size = data.size();
 		for (int i = 0 ; i < size ; i++)
 		{
-			if(data.get(i).studentNumber == i)
+			if(data.get(i).get_studentNumber() == i)
 			{
 				return i;
 			}
 		}
 		return -1;
+	}
+	
+	void temp(student std)
+	{
+		data.add(std);
+		System.out.println(std.toString());
 	}
 	
 }
