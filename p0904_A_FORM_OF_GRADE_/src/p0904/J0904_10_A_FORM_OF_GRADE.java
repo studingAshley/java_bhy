@@ -179,17 +179,26 @@ class system // 추가, 출력, 수정, 삭제, 검색, 등수부여, 정렬
 	}
 	//=================================================================
 	//=================================================================
-	void set_score_kor(String name, int sc)
+	boolean set_score_kor(String name, int sc)
 	{
+		int index = get_index(name);
+		if(index != -1)
+		{
+			data.get(index).kor = sc;
+			return true;
+		}
+		return false;
 		
 	}
 	void set_score_eng(String name, int sc)
 	{
-		
+		int index = get_index(name);
+		data.get(index).eng = sc;		
 	}
 	void set_score_math(String name, int sc)
 	{
-		
+		int index = get_index(name);
+		data.get(index).math = sc;		
 	}
 	//=================================================================
 	void set_score_kor(int studentnum, int sc)
