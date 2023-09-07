@@ -82,6 +82,94 @@ public class J0907_07_STUDENTS {
 				System.out.println();
 				break;
 			case 3 : 
+				System.out.println("------------------------------------------------------------------");
+				System.out.println("                        [ 학생 성적 수정 ]");
+				System.out.println("------------------------------------------------------------------");
+				System.out.println("수정 데이터 선택 (종료 : 0)");
+				System.out.println("1. 학번으로 찾기");
+				System.out.println("2. 이름으로 찾기");
+				int select = scan.nextInt();
+				int search = 0 ;
+				String searchName = new String();
+				int find = -1;
+				if(select == 1 )
+				{
+					System.out.print("학번 >> ");
+					search = scan.nextInt();
+					for(int i = 0; i < stdNum.length ; i++)
+					{
+						if(stdNum[i] == search)
+						{
+							find = i;
+						}
+					}
+				}
+				else if(select == 2)
+				{
+					System.out.print("이름 >> ");
+					searchName = scan.next();
+					for(int i = 0; i < stdNum.length ; i++)
+					{
+						if(searchName.equals(name[i]))
+						{
+							find = i;
+						}
+					}
+				}
+				else if(select == 0 )
+				{
+					System.out.println("초기메뉴로 돌아감");
+					break;
+				}
+				else
+				{
+					System.out.println("없는 메뉴 선택시 출력하는 문자열");
+					break;
+				}
+				
+				if(find == -1)
+				{
+					System.out.println("데이터를 찾지 못함");
+					break;
+				}
+				
+				System.out.println("학번: "+ stdNum[find]+", 이름 :"+name[find]+"\n수정 데이터 선택");
+				System.out.println("1. 국어");
+				System.out.println("2. 영어");
+				System.out.println("3. 수학");
+				
+				select = scan.nextInt();
+				
+				if(select == 1)
+				{
+					System.out.println("국어를 선택하셨습니다.");
+					System.out.println("기존 값 :"+score[find][0]);
+					System.out.print("변경할 값을 입력하세요 >> ");
+					score[find][0] = scan.nextInt();
+					
+				}
+				else if(select == 2)
+				{
+					System.out.println("영어를 선택하셨습니다.");
+					System.out.println("기존 값 :"+score[find][1]);
+					System.out.print("변경할 값을 입력하세요 >> ");
+					score[find][1] = scan.nextInt();
+				}
+				else if(select == 3)
+				{
+					System.out.println("수학을 선택하셨습니다.");
+					System.out.println("기존 값 :"+score[find][2]);
+					System.out.print("변경할 값을 입력하세요 >> ");
+					score[find][2] = scan.nextInt();
+				}
+				else
+				{
+					System.out.println("없는 메뉴 선택시 출력하는 문자열");
+				}
+				
+				total[find] = score[find][0] + score[find][1] + score[find][2];
+				avg[find] = total[find]/3.0;
+			
 				break;
 			case 0 : 
 				isloop = false;
