@@ -60,6 +60,7 @@ public class StuScore {
 
 	public void setKor(int kor) {
 		this.kor = kor;
+		setTotal();
 	}
 
 	public int getEng() {
@@ -68,6 +69,7 @@ public class StuScore {
 
 	public void setEng(int eng) {
 		this.eng = eng;
+		setTotal();
 	}
 
 	public int getMath() {
@@ -76,16 +78,33 @@ public class StuScore {
 
 	public void setMath(int math) {
 		this.math = math;
+		setTotal();
 	}
 
 	public int getTotal() {
 		return total;
+	}
+	
+	public void setTotal()
+	{
+		this.total = kor+eng+math;
+		setAvg();
 	}
 
 	public double getAvg() {
 		return avg;
 	}
 
+	void setAvg()
+	{
+		this.avg = total/NumSub;
+	}
+	
+	void setRank(int rank)
+	{
+		this.rank = rank;
+	}
+	
 	public int getRank() {
 		return rank;
 	}
