@@ -5,7 +5,7 @@ public class J0914_04 {
 	public static void main(String[] args) {
 
 		Buyer b1 = new Buyer("aaa", "Hong");
-		System.out.printf("%s balance : %d \n",b1.name, b1.money);
+//		System.out.printf("%s balance : %d \n",b1.name, b1.money);
 		
 		b1.buy(new Tv());
 		b1.buy(new Tv());
@@ -15,7 +15,7 @@ public class J0914_04 {
 		b1.buy(new Audio());
 		b1.buy(new Washing());
 		
-		System.out.printf("%s balance : %d\n",b1.name,b1.money);
+//		System.out.printf("%s balance : %d\n",b1.name,b1.money);
 		
 		System.out.println("Size of a cart : "+b1.cart.size()
 		);
